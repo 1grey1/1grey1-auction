@@ -1,0 +1,43 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table user {
+  id integer [primary key]
+  created_at integer
+  email integer
+  password_hash integer
+}
+
+Table user_profile {
+  id integer [primary key]
+  created_at integer
+  name integer
+  contact_info integer
+  user_id integer
+}
+
+Table lot {
+  id integer [primary key]
+  created_at integer
+  title integer
+  photo_path integer
+  start_price integer
+  description integer
+  bet_step integer
+  deadline integer
+}
+
+Table category {
+  id integer [primary key]
+  created_at integer
+  name integer
+  inner_code integer
+}
+
+Table bet {
+  id integer [primary key]
+  created_at integer
+  amount integer
+}
+
+Ref: user_profile.user_id - user.id 
