@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add schema.txt [1A-1]
+- relationship of tables [1A-2]
+- template all les pages [1A-3]
 
 ### Added
 
