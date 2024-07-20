@@ -1,5 +1,6 @@
 <?php
 
+/** @var ?string $mainClassName */
 /** @var string $pageContent */
 /** @var string $title */
 
@@ -8,15 +9,19 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?= $title ?></title>
+    <title>auction | <?= $title ?></title>
     <link href="./resources/css/normalize.min.css" rel="stylesheet">
     <link href="./resources/css/style.css" rel="stylesheet">
 </head>
 <body>
 
-    <?= includeTemplate('layout/_main-header.php', [
-            'pageContent' => $pageContent,
-    ]) ?>
+    <div class="page-wrapper">
+        <?= includeTemplate('layout/_main-header.php') ?>
+
+        <main class="<?= $mainClassName ?? '' ?>">
+            <?= $pageContent ?>
+        </main>
+    </div>
 
     <?= includeTemplate('layout/_main-footer.php') ?>
 

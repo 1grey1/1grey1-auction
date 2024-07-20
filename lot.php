@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 require_once './core/helpers.php';
 
-$pageContent = includeTemplate('lot.php');
+$categoryList = includeTemplate('_partials/category-list.php');
+
+$pageContent = includeTemplate('lot.php', [
+    'categoryList' => $categoryList,
+]);
 
 $layoutContent = includeTemplate('layout/main.php', [
     'pageContent' => $pageContent,
-    'title'       => 'index',
+    'title'       => 'lot',
 ]);
 
 print $layoutContent;
