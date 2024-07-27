@@ -1,6 +1,10 @@
 <?php
 
+/** @var string $categoryList */
+
 ?>
+<?= $categoryList ?>
+
 <!-- form--invalid -->
 <form class="form container form--invalid" action="" method="post" autocomplete="off">
     <h2>Регистрация нового аккаунта</h2>

@@ -2,17 +2,27 @@
 
 declare(strict_types=1);
 
-require_once './core/helpers.php';
+require_once './core/init.php';
 
-$categoryList = includeTemplate('_partials/category-list.php');
-
-$pageContent = includeTemplate('search.php', [
-    'categoryList' => $categoryList,
+/** @var $categories */
+$categoryList = includeTemplate('_partials/category-list.php', [
+    'categories' => $categories,
 ]);
 
+/** @var $lots */
+$pageContent = includeTemplate('search.php', [
+    'categoryList' => $categoryList,
+    'lots'         => $lots,
+]);
+
+/** @var $authStatus */
+/** @var $user */
 $layoutContent = includeTemplate('layout/main.php', [
+    'authStatus'  => $authStatus,
+    'categoryList' => $categoryList,
     'pageContent' => $pageContent,
     'title'       => 'search',
+    'user'        => $user,
 ]);
 
 print $layoutContent;

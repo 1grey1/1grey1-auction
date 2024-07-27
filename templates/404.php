@@ -1,8 +1,11 @@
 <?php
 
 /** @var string $categoryList */
+/** @var array $categories */
 
 ?>
+
+
 <?= $categoryList ?>
 
 <section class="lot-item container">
