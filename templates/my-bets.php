@@ -13,7 +13,7 @@
                 <div class="rates__img">
                     <img src="./resources/img/rate1.jpg" width="54" height="40" alt="Сноуборд">
                 </div>
-                <h3 class="rates__title"><a href="lot.html">2014 Rossignol District Snowboard</a></h3>
+                <h3 class="rates__title"><a href="lot.php">2014 Rossignol District Snowboard</a></h3>
             </td>
             <td class="rates__category">
                 Доски и лыжи

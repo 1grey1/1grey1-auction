@@ -1,8 +1,11 @@
 <?php
 
+/** @var bool    $authStatus */
+/** @var string  $categoryList */
 /** @var ?string $mainClassName */
-/** @var string $pageContent */
-/** @var string $title */
+/** @var string  $pageContent */
+/** @var string  $user */
+/** @var string  $title */
 
 ?>
 <!DOCTYPE html>
@@ -16,14 +19,19 @@
 <body>
 
     <div class="page-wrapper">
-        <?= includeTemplate('layout/_main-header.php') ?>
+        <?= includeTemplate('layout/_main-header.php', [
+            'authStatus' => $authStatus,
+            'user'       => $user,
+        ]) ?>
 
         <main class="<?= $mainClassName ?? '' ?>">
             <?= $pageContent ?>
         </main>
     </div>
 
-    <?= includeTemplate('layout/_main-footer.php') ?>
+    <?= includeTemplate('layout/_main-footer.php', [
+        'categoryList' => $categoryList,
+    ]) ?>
 
 </body>
 </html>
