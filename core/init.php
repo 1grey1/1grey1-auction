@@ -10,7 +10,7 @@ $lots = require_once './data/lot.php';
 $bets = require_once './data/bet.php';
 $categories = require_once './data/category.php';
 
-$authStatus = true;
+$authStatus = false;
 $user = [
     'name' => 'Константин'
 ];
