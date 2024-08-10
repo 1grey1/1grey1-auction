@@ -2,11 +2,11 @@
 
 /** @var string $categoryList */
 /** @var array $errors */
+/** @var array $postInput */
 
 ?>
 <?= $categoryList ?>
 
-<!-- form--invalid -->
 <form
     class="form container form--invalid"
     action="sign-up.php"
@@ -15,13 +15,15 @@
     enctype="application/x-www-form-urlencoded"
 >
     <h2>Регистрация нового аккаунта</h2>
-    <div class="form__item<?= isset($errors['email']) ? ' form__item--invalid' : ''?>">
-        <label for="email">E-mail <sup>*</sup></label>
+
+    <?php $key = 'email'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">E-mail <sup>*</sup></label>
         <input
-            id="email"
+            id="<?= $key ?>"
             type="text"
-            name="email"
-            value="<?= $_POST['email'] ?? '' ?>"
+            name="<?= $key ?>"
+            value="<?= $postInput[$key] ?? '' ?>"
             placeholder="Введите e-mail"
         >
 
@@ -30,13 +32,14 @@
         <?php endif; ?>
     </div>
 
-    <div class="form__item<?= isset($errors['password']) ? ' form__item--invalid' : ''?>">
-        <label for="password">Пароль <sup>*</sup></label>
+    <?php $key = 'password'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">Пароль <sup>*</sup></label>
         <input
-            id="password"
+            id="<?= $key ?>"
             type="password"
-            name="password"
-            value="<?= $_POST['password'] ?? '' ?>"
+            name="<?= $key ?>"
+            value="<?= $postInput[$key] ?? '' ?>"
             placeholder="Введите пароль"
         >
 
@@ -45,14 +48,15 @@
         <?php endif; ?>
     </div>
 
-    <div class="form__item<?= isset($errors['name']) ? ' form__item--invalid' : ''?>">
-        <label for="name">Имя <sup>*</sup></label>
+    <?php $key = 'name'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">Имя <sup>*</sup></label>
         <input
-                id="name"
-                type="text"
-                name="name"
-                value="<?= $_POST['name'] ?? '' ?>"
-                placeholder="Введите имя"
+            id="<?= $key ?>"
+            type="text"
+            name="<?= $key ?>"
+            value="<?= $postInput[$key] ?? '' ?>"
+            placeholder="Введите имя"
         >
 
         <?php if (isset($errors['name'])): ?>
@@ -60,20 +64,24 @@
         <?php endif; ?>
     </div>
 
-    <div class="form__item<?= isset($errors['contact_info']) ? ' form__item--invalid' : ''?>">
-        <label for="message">Контактные данные <sup>*</sup></label>
+    <?php $key = 'contact_info'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">Контактные данные <sup>*</sup></label>
         <textarea
-                id="message"
-                name="contact_info"
-                placeholder="Напишите как с вами связаться"
-        ></textarea>
+            id="<?= $key ?>"
+            name="<?= $key ?>"
+            placeholder="Напишите как с вами связаться"
+        ><?= $postInput[$key] ?? '' ?></textarea>
 
-        <?php if (isset($errors['contact_info'])): ?>
-            <span class="form__error"><?= $errors['contact_info'] ?></span>
+        <?php if (isset($errors[$key])): ?>
+            <span class="form__error"><?= $errors[$key] ?></span>
         <?php endif; ?>
     </div>
 
-    <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
+    <?php if (!empty($errors)): ?>
+        <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
+    <?php endif; ?>
+
     <button type="submit" class="button">Зарегистрироваться</button>
     <a class="text-link" href="#">Уже есть аккаунт</a>
 </form>
