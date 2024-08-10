@@ -9,10 +9,13 @@ $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
 ]);
 
+$paginationList = includeTemplate('_partials/pagination.php');
+
 /** @var $lots */
 $pageContent = includeTemplate('all-lots.php', [
-    'lots'         => $lots,
-    'categoryList' => $categoryList,
+    'lots'           => $lots,
+    'categoryList'   => $categoryList,
+    'paginationList' => $paginationList
 ]);
 
 /** @var $authStatus */
