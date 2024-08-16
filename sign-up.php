@@ -14,6 +14,7 @@ $fields = [
     'contact_info',
 ];
 
+/** @var $link */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($fields as $key) {
         if (!isset($_POST[$key])) {
@@ -27,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $link = mysqli_connect('127.0.0.1:3306', 'root', '', 'auction');
         if ($link) {
             $email = mysqli_real_escape_string($link, $postInput['email']);
             $passwordHash = password_hash($postInput['password'], PASSWORD_DEFAULT);
