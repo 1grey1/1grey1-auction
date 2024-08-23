@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require_once './core/init.php';
 
+/** @var $link */
+
 $errors = [];
 $postInput = [];
 
@@ -27,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $link = mysqli_connect('127.0.0.1:3306', 'root', '', 'auction');
         if ($link) {
             $email = mysqli_real_escape_string($link, $postInput['email']);
             $passwordHash = password_hash($postInput['password'], PASSWORD_DEFAULT);
