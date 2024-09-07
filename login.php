@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 require_once './core/init.php';
 
+if (isset($_SESSION['user'])) {
+    header('Location: index.php');
+    exit;
+}
+
 /** @var $link */
 $errors = [];
 $postInput = [];
