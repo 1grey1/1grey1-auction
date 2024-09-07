@@ -1,23 +1,44 @@
 <?php
 
 /** @var string $categoryList */
+/** @var array $errors */
+/** @var array $postInput */
 
 ?>
 <?= $categoryList ?>
 
-<!-- form--invalid -->
-<form class="form container" action="" method="post">
+<!-- -->
+<form class="form container form--invalid" action="" method="post">
     <h2>Вход</h2>
-    <!-- form__item--invalid -->
-    <div class="form__item">
-        <label for="email">E-mail <sup>*</sup></label>
-        <input id="email" type="text" name="email" placeholder="Введите e-mail">
-        <span class="form__error">Введите e-mail</span>
+
+    <?php $key = 'email'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">E-mail <sup>*</sup></label>
+        <input
+            id="<?= $key ?>"
+            type="text"
+            name="<?= $key ?>"
+            value="<?= $postInput[$key] ?? '' ?>"
+            placeholder="Введите e-mail"
+        >
+        <?php if (isset($errors[$key])): ?>
+            <span class="form__error"><?= $errors[$key] ?></span>
+        <?php endif; ?>
     </div>
-    <div class="form__item form__item--last">
-        <label for="password">Пароль <sup>*</sup></label>
-        <input id="password" type="password" name="password" placeholder="Введите пароль">
-        <span class="form__error">Введите пароль</span>
+
+    <?php $key = 'password'; ?>
+    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+        <label for="<?= $key ?>">Пароль <sup>*</sup></label>
+        <input
+            id="<?= $key ?>"
+            type="password"
+            name="<?= $key ?>"
+            value="<?= $postInput[$key] ?? '' ?>"
+            placeholder="Введите пароль"
+        >
+        <?php if (isset($errors[$key])): ?>
+            <span class="form__error"><?= $errors[$key] ?></span>
+        <?php endif; ?>
     </div>
     <button type="submit" class="button">Войти</button>
 </form>

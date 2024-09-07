@@ -15,11 +15,9 @@ $pageContent = includeTemplate('index.php', [
     'lots'         => $lots,
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'    => $authStatus,
-    'categoryList' => $categoryList,
+    'categoryList'  => $categoryList,
     'mainClassName' => 'container',
     'pageContent'   => $pageContent,
     'title'         => 'index',

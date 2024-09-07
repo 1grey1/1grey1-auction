@@ -15,14 +15,12 @@ $pageContent = includeTemplate('search.php', [
     'lots'         => $lots,
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'  => $authStatus,
     'categoryList' => $categoryList,
-    'pageContent' => $pageContent,
-    'title'       => 'search',
-    'user'        => $user,
+    'pageContent'  => $pageContent,
+    'title'        => 'search',
+    'user'         => $user,
 ]);
 
 print $layoutContent;

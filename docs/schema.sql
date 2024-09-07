@@ -36,7 +36,7 @@ CREATE table user_profile
     id           INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     created_at   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     name         VARCHAR(128) NOT NULL,
-    avatar_path  VARCHAR(255),
+    avatar_path  VARCHAR(255) NULL,
     contact_info TEXT         NOT NULL,
     user_id      INT UNSIGNED NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id)
