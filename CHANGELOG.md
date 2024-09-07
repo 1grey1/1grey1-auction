@@ -7,10 +7,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add schema.txt [1A-1]
-- relationship of tables [1A-2]
-- template all les pages [1A-3]
-
-### Added
-
+- Сделал разделение страниц на закрытые и открытые [AUC-8](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-8)
 - Started semver changelog
