@@ -2,4 +2,9 @@
 
 declare(strict_types=1);
 
-phpinfo();
+session_start();
+
+unset($_SESSION['user']);
+
+header('Location: index.php');
+exit;

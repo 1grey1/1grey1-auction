@@ -1,10 +1,9 @@
 <?php
 
-/** @var bool    $authStatus */
 /** @var string  $categoryList */
 /** @var ?string $mainClassName */
 /** @var string  $pageContent */
-/** @var string  $user */
+/** @var ?array  $user */
 /** @var string  $title */
 
 ?>
@@ -20,8 +19,7 @@
 
     <div class="page-wrapper">
         <?= includeTemplate('layout/_main-header.php', [
-            'authStatus' => $authStatus,
-            'user'       => $user,
+            'user' => $user,
         ]) ?>
 
         <main class="<?= $mainClassName ?? '' ?>">

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once './core/init.php';
 
-/** @var  $categories */
+/** @var $categories */
 $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
 ]);
@@ -18,14 +18,12 @@ $pageContent = includeTemplate('all-lots.php', [
     'paginationList' => $paginationList
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'  => $authStatus,
     'categoryList' => $categoryList,
-    'pageContent' => $pageContent,
-    'title'       => 'all-lots',
-    'user'        => $user,
+    'pageContent'  => $pageContent,
+    'title'        => 'all-lots',
+    'user'         => $user,
 ]);
 
 print $layoutContent;

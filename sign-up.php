@@ -29,15 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        if ($link) {
-            $email = mysqli_real_escape_string($link, $postInput['email']);
-            $passwordHash = password_hash($postInput['password'], PASSWORD_DEFAULT);
-            $sql = "INSERT INTO user (email, password_hash) VALUES ('$email', '$passwordHash')";
-
-            if (mysqli_query($link, $sql)) {
-                header('Location: login.php');
-                exit;
-            }
+        if (createUser($link, $postInput)) {
+            header('Location: login.php');
+            exit;
         }
     }
 }
@@ -53,14 +47,12 @@ $pageContent = includeTemplate('sign-up.php', [
     'postInput'    => $postInput
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'   => $authStatus,
     'categoryList' => $categoryList,
     'pageContent'  => $pageContent,
     'title'        => 'sign-up',
-    'user'         => $user,
+    'user'         => $user
 ]);
 
 print $layoutContent;

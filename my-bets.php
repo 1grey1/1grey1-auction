@@ -13,14 +13,12 @@ $pageContent = includeTemplate('my-bets.php', [
     'categoryList' => $categoryList,
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'  => $authStatus,
     'categoryList' => $categoryList,
-    'pageContent' => $pageContent,
-    'title'       => 'my-bets',
-    'user'        => $user,
+    'pageContent'  => $pageContent,
+    'title'        => 'my-bets',
+    'user'         => $user,
 ]);
 
 print $layoutContent;

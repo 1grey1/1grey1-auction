@@ -13,14 +13,12 @@ $pageContent = includeTemplate('404.php', [
     'categoryList' => $categoryList,
 ]);
 
-/** @var $authStatus */
-/** @var $user */
+/** @var ?array $user */
 $layoutContent = includeTemplate('layout/main.php', [
-    'authStatus'  => $authStatus,
     'categoryList' => $categoryList,
-    'pageContent' => $pageContent,
-    'title'       => '404',
-    'user'        => $user,
+    'pageContent'  => $pageContent,
+    'title'        => '404',
+    'user'         => $user,
 ]);
 
 print $layoutContent;
