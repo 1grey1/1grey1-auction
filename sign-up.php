@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
     exit;
 }
 
-/** @var $link */
+
 
 $errors = [];
 $postInput = [];
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
+        /** @var $link */
         if (createUser($link, $postInput)) {
             header('Location: login.php');
             exit;

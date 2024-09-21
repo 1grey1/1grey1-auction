@@ -2,21 +2,27 @@
 
 return [
     [
-        'name' => 'Доски и лыжи'
+        'name'       => 'Доски и лыжи',
+        'inner_code' => 'boards',
     ],
     [
-        'name' => 'Крепления'
+        'name'       => 'Крепления',
+        'inner_code' => 'attachment',
     ],
     [
-        'name' => 'Ботинки'
+        'name'       => 'Ботинки',
+        'inner_code' => 'boots',
     ],
     [
-        'name' => 'Одежда'
+        'name'       => 'Одежда',
+        'inner_code' => 'clothing',
     ],
     [
-        'name' => 'Инструменты'
+        'name'       => 'Инструменты',
+        'inner_code' => 'tools',
     ],
     [
-        'name' => 'Разное'
+        'name'       => 'Разное',
+        'inner_code' => 'other',
     ],
 ];

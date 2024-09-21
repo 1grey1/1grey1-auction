@@ -74,7 +74,7 @@ CREATE table lot
     deadline      DATETIME     NOT NULL,
     user_id       INT UNSIGNED NOT NULL,
     category_id   INT UNSIGNED NOT NULL,
-    winner_bet_id INT UNSIGNED NOT NULL,
+    winner_bet_id INT UNSIGNED NULL,
     FOREIGN KEY (user_id) REFERENCES user (id),
     FOREIGN KEY (category_id) REFERENCES category (id)
 );

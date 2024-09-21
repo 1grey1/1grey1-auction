@@ -24,3 +24,17 @@ function createUser(mysqli $link, array $data): bool
 
     return false;
 }
+
+function createCategories(mysqli $link, array $categories): void
+{
+    foreach ($categories as $category) {
+        $sql = "INSERT INTO category (name, inner_code) VALUES ('{$category['name']}', '{$category['inner_code']}')";
+        mysqli_query($link, $sql);
+    }
+}
+
+function getCategories(mysqli $link):object
+{
+    $sql = "SELECT * FROM category";
+    return mysqli_query($link, $sql);
+}
