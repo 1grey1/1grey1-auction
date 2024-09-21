@@ -27,7 +27,7 @@
     </div>
 
     <?php $key = 'password'; ?>
-    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+    <div class="form__item form__item--last<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
         <label for="<?= $key ?>">Пароль <sup>*</sup></label>
         <input
             id="<?= $key ?>"

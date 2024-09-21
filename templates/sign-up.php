@@ -65,7 +65,7 @@
     </div>
 
     <?php $key = 'contact_info'; ?>
-    <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
+    <div class="form__item form__item--last<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">
         <label for="<?= $key ?>">Контактные данные <sup>*</sup></label>
         <textarea
             id="<?= $key ?>"
