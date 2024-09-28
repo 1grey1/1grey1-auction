@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 require_once './core/init.php';
 
-
-
 /** @var $categories */
 $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
