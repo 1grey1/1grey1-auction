@@ -33,8 +33,25 @@ function createCategories(mysqli $link, array $categories): void
     }
 }
 
-function getCategories(mysqli $link):object
+function getCategories(mysqli $link): mysqli_result
 {
     $sql = "SELECT * FROM category";
     return mysqli_query($link, $sql);
+}
+
+function getLots(mysqli $link): array
+{
+    $lots = [];
+
+    $sql = "
+        SELECT `lot`.*, `c`.`name` AS category_name
+        FROM `lot`
+        JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+    ";
+    $result = mysqli_query($link, $sql);
+    while ($lot = mysqli_fetch_assoc($result)) {
+        $lots[] = $lot;
+    }
+
+    return $lots;
 }

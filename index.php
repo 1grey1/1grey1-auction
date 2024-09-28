@@ -9,10 +9,10 @@ $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
 ]);
 
-/** @var  $lots */
+/** @var $link */
 $pageContent = includeTemplate('index.php', [
     'categoryList' => $categoryList,
-    'lots'         => $lots,
+    'lots'         => getLots($link),
 ]);
 
 /** @var ?array $user */

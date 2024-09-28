@@ -1,0 +1,7 @@
+.lots__list {
+    justify-content: flex-start;
+}
+
+.lots__list .lots__item:not(:nth-child(3n)) {
+    margin-right: 30px;
+}
