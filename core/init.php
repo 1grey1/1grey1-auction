@@ -16,7 +16,6 @@ require_once 'functions.php';
 
 session_start();
 $user = $_SESSION['user'] ?? null;
-$categories = [];
 
 db_connect:
 require_once 'db-function.php';
@@ -30,13 +29,9 @@ $link = mysqli_connect(
     $mysql['database']
 );
 
-foreach (getCategories($link) as $category) {
-    $categories[] = $category;
-}
-
 if (!$link) {
     http_response_code(500);
     exit;
 }
 
-$categoriesShell = require_once "{$prefix}/data/category.php";
+require_once 'bootstrap.php';

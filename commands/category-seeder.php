@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once '../core/init.php';
 
-/** @var array  $categoriesShell */
-/** @var mysqli $link */
+$categories = require_once "../data/category.php";
 
-createCategories($link, $categoriesShell);
+/** @var mysqli $link */
+createCategories($link, $categories);

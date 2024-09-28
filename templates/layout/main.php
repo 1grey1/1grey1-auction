@@ -14,6 +14,7 @@
     <title>auction | <?= $title ?></title>
     <link href="./resources/css/normalize.min.css" rel="stylesheet">
     <link href="./resources/css/style.css" rel="stylesheet">
+    <link href="./resources/css/fix.css" rel="stylesheet">
 </head>
 <body>
 
