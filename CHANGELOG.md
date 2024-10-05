@@ -8,6 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Сделана отрисовка лотов на главную страницу [AUC-15](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-15)
-- Реализовано добавление лота в БД [AUC-3](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-3)
+- Реализовано добавление лота в БД [AUC-3](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-3)git
 - Сделал разделение страниц на закрытые и открытые [AUC-8](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-8)
 - Started semver changelog

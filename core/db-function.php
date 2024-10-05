@@ -55,3 +55,16 @@ function getLots(mysqli $link): array
 
     return $lots;
 }
+
+function getLot(mysqli $link, int $id): ?array
+{
+    $sql = "
+        SELECT `lot`.*, `c`.`name` AS category_name
+        FROM `lot`
+        JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+        WHERE `lot`.`id` = $id
+    ";
+    $result = mysqli_query($link, $sql);
+
+    return mysqli_fetch_assoc($result);
+}

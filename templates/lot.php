@@ -1,46 +1,41 @@
 <?php
 
-/** @var string $bets */
+/** @var array  $bets */
 /** @var string $categoryList */
+/** @var array  $lot */
 
 ?>
 <?= $categoryList ?>
 
 <section class="lot-item container">
-    <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+    <h2><?= esc($lot['title']) ?></h2>
     <div class="lot-item__content">
         <div class="lot-item__left">
             <div class="lot-item__image">
-                <img src="resources/img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+                <img
+                    src="uploads/<?= esc($lot['photo_path']) ?>"
+                    width="730"
+                    height="548"
+                    alt="<?= esc($lot['title']) ?>"
+                >
             </div>
-            <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
-            <p class="lot-item__description">
-                Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
-                снег
-                мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
-                снаряд
-                отличной гибкостью и отзывчивостью, а симметричная геометрия в сочетании с классическим прогибом
-                кэмбер
-                позволит уверенно держать высокие скорости. А если к концу катального дня сил совсем не останется,
-                просто
-                посмотрите на Вашу доску и улыбнитесь, крутая графика от Шона Кливера еще никого не оставляла
-                равнодушным.
-            </p>
+            <p class="lot-item__category">Категория: <span><?= esc($lot['category_name']) ?></span></p>
+            <p class="lot-item__description"><?= esc($lot['description']) ?></p>
         </div>
         <div class="lot-item__right">
             <div class="lot-item__state">
-                <div class="lot-item__timer timer">10:54</div>
+                <div class="lot-item__timer timer" style="width: fit-content;"><?= esc($lot['deadline']) ?></div>
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
-                        <span class="lot-item__cost">10 999</span>
+                        <span class="lot-item__cost"><?= escCost($lot['start_price']) ?></span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span>12 000 р</span>
+                        Мин. ставка <span><?= escCost($lot['bet_step']) ?></span>
                     </div>
                 </div>
                 <form class="lot-item__form" action="" method="post" autocomplete="off">
-                    <p class="lot-item__form-item form__item form__item--invalid">
+                    <p class="lot-item__form-item form__item">
                         <label for="cost">Ваша ставка</label>
                         <input id="cost" type="text" name="cost" placeholder="12 000">
                         <span class="form__error">Введите наименование лота</span>
