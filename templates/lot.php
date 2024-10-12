@@ -3,6 +3,9 @@
 /** @var array  $bets */
 /** @var string $categoryList */
 /** @var array  $lot */
+/** @var array  $errors */
+/** @var array  $postInput */
+/** @var ?array $user */
 
 ?>
 <?= $categoryList ?>
@@ -34,13 +37,27 @@
                         Мин. ставка <span><?= escCost($lot['bet_step']) ?></span>
                     </div>
                 </div>
-                <form class="lot-item__form" action="" method="post" autocomplete="off">
+                <?php $key = 'cost'; ?>
+                <form
+                    class="lot-item__form<?= isset($errors[$key]) ? ' form__item--invalid' : '' ?>"
+                    action=""
+                    method="post"
+                    autocomplete="off"
+                >
                     <p class="lot-item__form-item form__item">
-                        <label for="cost">Ваша ставка</label>
-                        <input id="cost" type="text" name="cost" placeholder="12 000">
-                        <span class="form__error">Введите наименование лота</span>
+                        <label for="<?= $key ?>">Ваша ставка</label>
+                        <input
+                            id="<?= $key ?>"
+                            type="text"
+                            name="<?= $key ?>"
+                            placeholder="12 000"
+                        >
+                        <?php if (isset($errors[$key])): ?>
+                            <span class="form__error">Введите наименование лота</span>
+                        <?php endif; ?>
+
                     </p>
-                    <button type="submit" class="button">Сделать ставку</button>
+                    <button type="submit" class="button"<?= !isset($user) ? ' disabled' : '' ?>>Сделать ставку</button>
                 </form>
             </div>
             <div class="history">
@@ -49,7 +66,7 @@
 
                     <?php foreach ($bets as $bet): ?>
                         <?= includeTemplate('_partials/bets.php', [
-                                'bet' => $bet,
+                            'bet' => $bet,
                         ]) ?>
                     <?php endforeach; ?>
 

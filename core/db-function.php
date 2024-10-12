@@ -68,3 +68,30 @@ function getLot(mysqli $link, int $id): ?array
 
     return mysqli_fetch_assoc($result);
 }
+
+function getBets(mysqli $link, int $id): ?array
+{
+    $bets = [];
+    $sql = "
+        SELECT `bet`.*, `user_profile`.`name` AS user_name
+        FROM `bet`
+        JOIN `user_profile` ON `user_profile`.`user_id` = `bet`.`user_id`
+        WHERE `bet`.`lot_id` = $id
+    ";
+    $result = mysqli_query($link, $sql);
+    while ($bet = mysqli_fetch_assoc($result)) {
+        $bets[] = $bet;
+    }
+
+    return $bets;
+}
+
+function createBet(mysqli $link, int $cost, int $userId, int $lotId): bool
+{
+    $sql = "
+        INSERT INTO bet (amount, user_id, lot_id)
+        VALUES ($cost, $userId, $lotId)
+    ";
+
+    return mysqli_query($link, $sql);
+}
