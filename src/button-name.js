@@ -1,4 +1,3 @@
-console.log(1)
 document.addEventListener("DOMContentLoaded", function() {
     const fileInput = document.getElementById("photo");
     const label = document.getElementById("uploadButton");
