@@ -95,3 +95,20 @@ function createBet(mysqli $link, int $cost, int $userId, int $lotId): bool
 
     return mysqli_query($link, $sql);
 }
+
+function getLotsByCategory(mysqli $link, int $categoryId): ?array
+{
+    $lots = [];
+    $sql = "
+        SELECT `lot`.*, `category`.`name` AS category_name
+        FROM lot
+        JOIN category on category.id = lot.category_id
+        WHERE lot.category_id = $categoryId
+    ";
+    $result = mysqli_query($link, $sql);
+    while ($lot = mysqli_fetch_assoc($result)) {
+        $lots[] = $lot;
+    }
+
+    return $lots;
+}

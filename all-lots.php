@@ -11,10 +11,11 @@ $categoryList = includeTemplate('_partials/category-list.php', [
 
 $paginationList = includeTemplate('_partials/pagination.php');
 
-/** @var $lots */
+/** @var $link */
 $pageContent = includeTemplate('all-lots.php', [
-    'lots'           => $lots,
+    'lots'           => getLotsByCategory($link, intval($_GET['category_id'])),
     'categoryList'   => $categoryList,
+    'category'       => categoryName($categories, intval($_GET['category_id'])),
     'paginationList' => $paginationList
 ]);
 

@@ -1,6 +1,7 @@
 <?php
 
 /** @var array $lots */
+/** @var array $categories */
 
 ?>
 
@@ -8,24 +9,16 @@
     <h2 class="promo__title">Нужен стафф для катки?</h2>
     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
     <ul class="promo__list">
-        <li class="promo__item promo__item--boards">
-            <a class="promo__link" href="all-lots.php">Доски и лыжи</a>
-        </li>
-        <li class="promo__item promo__item--attachment">
-            <a class="promo__link" href="all-lots.php">Крепления</a>
-        </li>
-        <li class="promo__item promo__item--boots">
-            <a class="promo__link" href="all-lots.php">Ботинки</a>
-        </li>
-        <li class="promo__item promo__item--clothing">
-            <a class="promo__link" href="all-lots.php">Одежда</a>
-        </li>
-        <li class="promo__item promo__item--tools">
-            <a class="promo__link" href="all-lots.php">Инструменты</a>
-        </li>
-        <li class="promo__item promo__item--other">
-            <a class="promo__link" href="all-lots.php">Разное</a>
-        </li>
+
+        <?php foreach ($categories as $category): ?>
+            <li class="promo__item promo__item--<?= esc($category['inner_code']) ?>">
+                <a
+                    class="promo__link"
+                    href="all-lots.php?category_id=<?= esc( $category['id']) ?>"
+                ><?= esc($category['name']) ?></a>
+            </li>
+        <?php endforeach; ?>
+
     </ul>
 </section>
 

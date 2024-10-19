@@ -11,7 +11,7 @@ $categoryList = includeTemplate('_partials/category-list.php', [
 
 /** @var $link */
 $pageContent = includeTemplate('index.php', [
-    'categoryList' => $categoryList,
+    'categories' => $categories,
     'lots'         => getLots($link),
 ]);
 
