@@ -17,6 +17,7 @@
     <link href="./resources/css/fix.css" rel="stylesheet">
 </head>
 <body>
+
     <div class="page-wrapper">
         <?= includeTemplate('layout/_main-header.php', [
             'user' => $user,
