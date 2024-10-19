@@ -11,6 +11,7 @@ if ($_SERVER['PHP_SELF'] === 'category-seeder.php') {
     goto db_connect;
 }
 
+require_once 'constants.php';
 require_once 'helpers.php';
 require_once 'functions.php';
 
@@ -30,7 +31,7 @@ $link = mysqli_connect(
 );
 
 if (!$link) {
-    http_response_code(500);
+    http_response_code(INTERNAL_SERVER_ERROR);
     exit;
 }
 
