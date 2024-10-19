@@ -7,7 +7,6 @@
 
 ?>
 <?= $categoryList ?>
-
 <form
     class="form form--add-lot container<?= !empty($errors) ? ' form--invalid' : ''?>"
     action="add-lot.php"
@@ -75,7 +74,7 @@
                 id="<?= $key ?>"
                 name="<?= $key ?>"
             >
-            <label for="<?= $key ?>">Добавить</label>
+            <label for="<?= $key ?>" id="uploadButton">Загрузить изображение</label>
             <?php if (isset($errors[$key])): ?>
                 <span class="form__error"><?= $errors[$key] ?></span>
             <?php endif; ?>
@@ -134,3 +133,4 @@
     <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
     <button type="submit" class="button">Добавить лот</button>
 </form>
+<script src="../../src/button-name.js"></script>
