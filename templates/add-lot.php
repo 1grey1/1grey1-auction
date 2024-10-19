@@ -7,7 +7,6 @@
 
 ?>
 <?= $categoryList ?>
-<script src="../../src/button-name.js"></script>
 <form
     class="form form--add-lot container<?= !empty($errors) ? ' form--invalid' : ''?>"
     action="add-lot.php"
@@ -134,3 +133,4 @@
     <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
     <button type="submit" class="button">Добавить лот</button>
 </form>
+<script src="../../src/button-name.js"></script>
