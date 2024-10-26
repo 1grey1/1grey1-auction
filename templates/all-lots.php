@@ -10,7 +10,7 @@
 
 <div class="container">
     <section class="lots">
-        <h2>Все лоты в категории <span>«<?= $category ?>»</span></h2>
+        <h2>Все лоты в категории <span>«<?= esc($category) ?>»</span></h2>
         <ul class="lots__list">
 
             <?php foreach ($lots as $lot): ?>

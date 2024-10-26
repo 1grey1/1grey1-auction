@@ -32,7 +32,7 @@ if (isset($user) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $lot_id = intval($_GET['id']);
-    if (createBet($link, $postInput['cost'], $user['id'], $lot_id)) {
+    if (createBet($link, intval($postInput['cost']), intval($user['id']), $lot_id)) {
         header("Location: lot.php?id=$lot_id");
         exit;
     }
