@@ -261,6 +261,8 @@ main.container {
 }
 
 .user-menu__logged p {
+  display: flex;
+  justify-content: center;
   font-weight: 700;
   margin: 0;
 }
@@ -270,10 +272,6 @@ main.container {
   font-size: 13px;
   font-weight: 400;
   float: left;
-}
-
-.user-menu__logged a:last-child {
-  margin-left: 20px;
 }
 
 .user-menu__logged a:hover {
