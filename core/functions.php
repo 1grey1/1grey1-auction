@@ -12,6 +12,17 @@ function escCost(string $number): string
     return number_format(intval(esc($number)) , thousands_separator: ' ');
 }
 
+function categoryName(array $categories, $categoryId): string
+{
+    $name = '';
+    foreach ($categories as $category) {
+        if ($category['id'] == $categoryId) {
+            $name = $category['name'];
+        }
+    }
+    return $name;
+}
+
 function dump(array $array): void
 {
     print('<pre>');

@@ -7,6 +7,11 @@ require_once './core/init.php';
 /** @var $link */
 /** @var ?array $user */
 
+if (!isset($_GET['id']) || (!$lot = getLot($link, intval($_GET['id'])))) {
+    header('Location: 404.php');
+    exit;
+}
+
 $errors = [];
 $postInput = [];
 
@@ -31,11 +36,6 @@ if (isset($user) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: lot.php?id=$lot_id");
         exit;
     }
-}
-
-if (!isset($_GET['id']) || (!$lot = getLot($link, intval($_GET['id'])))) {
-    header('Location: 404.php');
-    exit;
 }
 
 $bets = getBets($link, intval($_GET['id']));
