@@ -47,7 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$flashMessage = null;
 
+if (isset($_SESSION['userCreated'])) {
+    $flashMessage = $_SESSION['userCreated'];
+    unset($_SESSION['userCreated']);
+}
 
 /** @var $categories */
 $categoryList = includeTemplate('_partials/category-list.php', [
@@ -57,6 +62,7 @@ $categoryList = includeTemplate('_partials/category-list.php', [
 $pageContent = includeTemplate('login.php', [
     'categoryList' => $categoryList,
     'errors'       => $errors,
+    'flashMessage' => $flashMessage,
     'postInput'    => $postInput
 ]);
 

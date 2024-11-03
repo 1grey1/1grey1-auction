@@ -1,15 +1,19 @@
 <?php
 
-/** @var string $categoryList */
-/** @var array $errors */
-/** @var array $postInput */
+/** @var string  $categoryList */
+/** @var array   $errors */
+/** @var ?string $flashMessage */
+/** @var array   $postInput */
 
 ?>
 <?= $categoryList ?>
 
-<!-- -->
 <form class="form container form--invalid" action="" method="post">
     <h2>Вход</h2>
+
+    <?php if (isset($flashMessage)): ?>
+        <div><?= $flashMessage ?></div>
+    <?php endif; ?>
 
     <?php $key = 'email'; ?>
     <div class="form__item<?= isset($errors[$key]) ? ' form__item--invalid' : ''?>">

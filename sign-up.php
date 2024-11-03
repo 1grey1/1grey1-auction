@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         /** @var $link */
         if (createUser($link, $postInput)) {
+            $_SESSION['userCreated'] = 'Вы успешно зарегистрировали аккаунт';
             header('Location: login.php');
             exit;
         }
