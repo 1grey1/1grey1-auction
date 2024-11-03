@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $description = mysqli_real_escape_string($link, $postInput['description']);
         $betStep = mysqli_real_escape_string($link, $postInput['bet_step']);
         $deadline = mysqli_real_escape_string($link, $postInput['deadline']);
-        $photo =  mysqli_real_escape_string($link, $name);
+        $photo = mysqli_real_escape_string($link, $name);
         $categoryId = intval($postInput['category_id']);
         $userId = intval($user['id']);
         $sql = "INSERT INTO lot (
