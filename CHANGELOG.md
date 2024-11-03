@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Добавили cs-fixer в проект [AUC-11](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-11)
 - Сделали флэш сообщение [AUC-10](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-10)
 - Настроил Докер [AUC-21](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-21)
 - Сделал фильтрацию лотов [AUC-18](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-18)

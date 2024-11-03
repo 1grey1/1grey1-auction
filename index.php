@@ -12,7 +12,7 @@ $categoryList = includeTemplate('_partials/category-list.php', [
 /** @var $link */
 $pageContent = includeTemplate('index.php', [
     'categories' => $categories,
-    'lots'         => getLots($link),
+    'lots'       => getLots($link),
 ]);
 
 /** @var ?array $user */

@@ -35,3 +35,11 @@ services:
       dockerfile: DockerFile
     volumes:
       - ./:/app
+
+  fixer:
+    build:
+      context: docker/php
+      dockerfile: DockerFile
+    volumes:
+      - ./:/app
+    entrypoint: ["php", "/app/vendor/bin/php-cs-fixer", 'fix']
