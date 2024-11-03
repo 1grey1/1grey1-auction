@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-//phpinfo();
-//exit;
-
 require_once './core/init.php';
 
 /** @var $categories */
