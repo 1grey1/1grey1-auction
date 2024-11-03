@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Сделал фильтрацию лотов [AAC-18](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-18)
+- Настроил Докер [AUC-21](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-21)
+- Сделал фильтрацию лотов [AUC-18](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-18)
 - Сделал добавление мини фото и текста после загруски изображения [AUC-12-13](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-12)
 - Сделал добавление и вывод ставок [AUC-17](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-17)
 - Сделана страница с одельным лотом [AUC-16](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-16)

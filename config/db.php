@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 return [
     'mysql' => [
-        'host'     => '127.0.0.1',
+        'host'     => 'mysql',
         'port'     => '3306',
-        'username' => 'root',
-        'password' => '',
+        'username' => 'auction',
+        'password' => 'password',
         'database' => 'auction'
     ]
 ];
