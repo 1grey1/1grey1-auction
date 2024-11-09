@@ -71,7 +71,7 @@ CREATE table lot
     start_price   FLOAT        NOT NULL,
     description   TEXT         NOT NULL,
     bet_step      FLOAT        NOT NULL,
-    deadline      DATETIME     NOT NULL,
+    deadline      DATE         NOT NULL,
     user_id       INT UNSIGNED NOT NULL,
     category_id   INT UNSIGNED NOT NULL,
     winner_bet_id INT UNSIGNED NULL,

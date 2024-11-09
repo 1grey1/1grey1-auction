@@ -5,3 +5,76 @@
 .lots__list .lots__item:not(:nth-child(3n)) {
     margin-right: 30px;
 }
+
+.rates__timer .timer {
+    width: fit-content;
+}
+
+.user-menu__logged a:not(:last-child) {
+    margin-right: 15px;
+}
+
+.lot-item__image img {
+    width: 730px;
+    height: 548px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.lot__image img {
+    width: 350px;
+    height: 261px;
+    object-fit: contain;
+    object-position: center;
+}
+.rates__img img {
+    width: 54px;
+    height: 44px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-data .user-menu__bets a {
+    white-space: nowrap;
+}
+
+.user-data .user_name {
+    display: flex;
+    justify-content: left;
+    font-weight: 700;
+    margin: 0;
+}
+
+.user-data .user-menu__bets {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-menu__logged {
+    display: flex;
+}
+
+.user-avatar {
+    border-radius: 25px;
+    border: 1px solid #879296;
+    width: 42px;
+    height: 42px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.user-avatar .fa-solid {
+    font-size: 20px;
+}
+
+.main-header__add-lot {
+    white-space: nowrap;
+}

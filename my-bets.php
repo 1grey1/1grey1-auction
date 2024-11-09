@@ -14,8 +14,10 @@ $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
 ]);
 
+/** @var $link */
 $pageContent = includeTemplate('my-bets.php', [
-    'categoryList' => $categoryList,
+    'bets' => getBetsByUser($link, intval($_SESSION['user']['id'])),
+    'categoryList'  => $categoryList,
 ]);
 
 /** @var ?array $user */
