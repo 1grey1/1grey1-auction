@@ -115,7 +115,7 @@ function getLotsByCategory(mysqli $link, int $categoryId): ?array
 
 function getBetsByUser(mysqli $link, int $userId): ?array
 {
-    $bets =[];
+    $bets = [];
     $sql = "
         SELECT `bet`.*, `lot`.`title` AS name_lot, `lot`.`photo_path` AS photo_path, `lot`.`deadline` AS deadline, `category`.`name` AS category_name
         FROM `bet`
@@ -131,18 +131,38 @@ function getBetsByUser(mysqli $link, int $userId): ?array
     return $bets;
 }
 
-function getLotsByLike(mysqli $link, string $name): ?array
+/**
+ * @param mysqli $link
+ * @param string $query
+ * @return array|null
+ */
+function getLotsBySearchQuery(mysqli $link, string $query): ?array
 {
     $lots = [];
     $sql = "
         SELECT `lot`.*, `c`.`name` AS category_name
         FROM `lot`
         JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
-        WHERE `title` LIKE '%$name%'
+        WHERE `title` LIKE '%$query%'
     ";
     $result = mysqli_query($link, $sql);
     while ($lot = mysqli_fetch_assoc($result)) {
         $lots[] = $lot;
     }
+
     return $lots;
+}
+
+function getUserByEmail(mysqli $link, string $email): ?array
+{
+    $email = mysqli_real_escape_string($link, $email);
+    $sql = "
+            SELECT `user`.*, `user_profile`.`name` AS user_name, `user_profile`.`contact_info` AS contact_info, `user_profile`.`avatar_path` AS avatar_path
+            FROM `user`
+            JOIN `user_profile` ON `user`.`id` = `user_profile`.`user_id`
+            WHERE email = '$email'
+        ";
+    $result = mysqli_query($link, $sql);
+
+    return mysqli_fetch_assoc($result);
 }

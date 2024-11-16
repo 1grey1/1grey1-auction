@@ -3,8 +3,9 @@
 /** @var string  $categoryList */
 /** @var ?string $mainClassName */
 /** @var string  $pageContent */
-/** @var ?array  $user */
+/** @var ?string $searchQuery */
 /** @var string  $title */
+/** @var ?array  $user */
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,8 @@
 <body>
     <div class="page-wrapper">
         <?= includeTemplate('layout/_main-header.php', [
-                'user' => $user,
+            'searchQuery' => $searchQuery ?? null,
+            'user'        => $user,
         ]) ?>
 
         <main class="<?= $mainClassName ?? '' ?>">

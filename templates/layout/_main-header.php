@@ -1,7 +1,8 @@
 <?php
 
-/** @var string $pageContent */
-/** @var ?array $user */
+/** @var string  $pageContent */
+/** @var ?array  $user */
+/** @var ?string $searchQuery */
 
 ?>
 <header class="main-header">
@@ -12,8 +13,8 @@
         </a>
         <form
             class="main-header__search"
-            method="post"
-            action=""
+            method="get"
+            action="all-lots.php"
             autocomplete="off"
         >
             <?php $key = 'search'?>
@@ -21,12 +22,11 @@
                 type="search"
                 name="<?= $key ?>"
                 placeholder="Поиск лота"
+                value="<?= $searchQuery ?? null ?>"
             >
-            <?php $key = 'find'?>
             <input
                 class="main-header__search-btn"
                 type="submit"
-                name="<?= $key ?>"
                 value="Найти"
             >
         </form>

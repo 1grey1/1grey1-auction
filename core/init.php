@@ -27,8 +27,4 @@ if (!$link) {
     exit;
 }
 
-if(isset($_POST['find'])){
-    header("Location: all-lots.php?search={$_POST['search']}");
-}
-
 require_once 'bootstrap.php';
