@@ -31,23 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $email = mysqli_real_escape_string($link, $postInput['email']);
-        $sql = "
-            SELECT `user`.*, `user_profile`.`name` AS user_name, `user_profile`.`contact_info` AS contact_info, `user_profile`.`avatar_path` AS avatar_path
-            FROM `user`
-            JOIN `user_profile` ON `user`.`id` = `user_profile`.`user_id`
-            WHERE email = '$email'
-        ";
-        $result = mysqli_query($link, $sql);
-
-        if ($user = mysqli_fetch_assoc($result)) {
+        if ($user = getUserByEmail($link, $postInput['email'])) {
             if (password_verify($postInput['password'], $user['password_hash'])) {
                 $_SESSION['user'] = $user;
                 header('Location: index.php');
                 exit;
             }
         }
-
         $errors['email'] = $errors['password'] = 'Пароль или email были введены не верно!';
     }
 }
