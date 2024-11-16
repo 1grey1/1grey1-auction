@@ -10,9 +10,25 @@
         <a class="main-header__logo" href="/">
             <img src="./resources/img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
-        <form class="main-header__search" method="get" action="" autocomplete="off">
-            <input type="search" name="search" placeholder="Поиск лота">
-            <input class="main-header__search-btn" type="submit" name="find" value="Найти">
+        <form
+            class="main-header__search"
+            method="post"
+            action=""
+            autocomplete="off"
+        >
+            <?php $key = 'search'?>
+            <input
+                type="search"
+                name="<?= $key ?>"
+                placeholder="Поиск лота"
+            >
+            <?php $key = 'find'?>
+            <input
+                class="main-header__search-btn"
+                type="submit"
+                name="<?= $key ?>"
+                value="Найти"
+            >
         </form>
         <a class="main-header__add-lot button" href="add-lot.php" <?= !isset($user) ? ' disabled' : '' ?>>Добавить лот</a>
         <nav class="user-menu">

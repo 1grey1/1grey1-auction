@@ -11,7 +11,6 @@ require_once 'functions.php';
 
 session_start();
 $user = $_SESSION['user'] ?? null;
-//dump($user);
 require_once 'db-function.php';
 $db = require_once "./config/db.php" ;
 $mysql = $db['mysql'];
@@ -26,6 +25,10 @@ $link = mysqli_connect(
 if (!$link) {
     http_response_code(INTERNAL_SERVER_ERROR);
     exit;
+}
+
+if(isset($_POST['find'])){
+    header("Location: all-lots.php?search={$_POST['search']}");
 }
 
 require_once 'bootstrap.php';

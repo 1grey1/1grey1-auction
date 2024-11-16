@@ -130,3 +130,19 @@ function getBetsByUser(mysqli $link, int $userId): ?array
 
     return $bets;
 }
+
+function getLotsByLike(mysqli $link, string $name): ?array
+{
+    $lots = [];
+    $sql = "
+        SELECT `lot`.*, `c`.`name` AS category_name
+        FROM `lot`
+        JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+        WHERE `title` LIKE '%$name%'
+    ";
+    $result = mysqli_query($link, $sql);
+    while ($lot = mysqli_fetch_assoc($result)) {
+        $lots[] = $lot;
+    }
+    return $lots;
+}
