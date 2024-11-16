@@ -11,7 +11,7 @@ require_once 'functions.php';
 
 session_start();
 $user = $_SESSION['user'] ?? null;
-
+//dump($user);
 require_once 'db-function.php';
 $db = require_once "./config/db.php" ;
 $mysql = $db['mysql'];

@@ -262,7 +262,7 @@ main.container {
 
 .user-menu__logged p {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   font-weight: 700;
   margin: 0;
 }

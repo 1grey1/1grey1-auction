@@ -14,13 +14,21 @@
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
-        <a class="main-header__add-lot button" href="add-lot.php">Добавить лот</a>
+        <a class="main-header__add-lot button" href="add-lot.php" <?= !isset($user) ? ' disabled' : '' ?>>Добавить лот</a>
         <nav class="user-menu">
 
-            <?php if (isset($user)): ?>
-                <div class="user-menu__logged">
-                    <p><?= esc($user['email']) ?></p>
-                    <a href="logout.php">Выйти</a>
+        <?php if (isset($user)): ?>
+        <div class="user-menu__logged">
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="user-data">
+                        <a class="user_name" href="my-bets.php"><?= esc($user['user_name']) ?></a>
+                        <div class="user-menu__bets">
+                            <a href="my-bets.php">Мои ставки</a>
+                            <a href="logout.php">Выйти</a>
+                        </div>
+                    </div>
                 </div>
             <?php else: ?>
                 <ul class="user-menu__list">

@@ -17,10 +17,9 @@
     <link href="../resources/css/fix.css" rel="stylesheet">
 </head>
 <body>
-
     <div class="page-wrapper">
         <?= includeTemplate('layout/_main-header.php', [
-            'user' => $user,
+                'user' => $user,
         ]) ?>
 
         <main class="<?= $mainClassName ?? '' ?>">
@@ -29,8 +28,9 @@
     </div>
 
     <?= includeTemplate('layout/_main-footer.php', [
-        'categoryList' => $categoryList,
+            'categoryList' => $categoryList,
     ]) ?>
 
+    <script src="https://kit.fontawesome.com/ede81f2f60.js" crossorigin="anonymous"></script>
 </body>
 </html>

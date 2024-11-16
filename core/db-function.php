@@ -112,3 +112,21 @@ function getLotsByCategory(mysqli $link, int $categoryId): ?array
 
     return $lots;
 }
+
+function getBetsByUser(mysqli $link, int $userId): ?array
+{
+    $bets =[];
+    $sql = "
+        SELECT `bet`.*, `lot`.`title` AS name_lot, `lot`.`photo_path` AS photo_path, `lot`.`deadline` AS deadline, `category`.`name` AS category_name
+        FROM `bet`
+        JOIN `lot` ON `bet`.`lot_id` = `lot`.`id`
+        JOIN `category` on `category`.`id` = `lot`.`category_id`
+        WHERE `bet`.`user_id` = $userId
+    ";
+    $result = mysqli_query($link, $sql);
+    while ($bet = mysqli_fetch_assoc($result)) {
+        $bets[] = $bet;
+    }
+
+    return $bets;
+}

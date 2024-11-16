@@ -119,10 +119,11 @@
             <input
                 class="form__input-date"
                 id="<?= $key ?>"
-                type="text"
+                type="date"
                 name="<?= $key ?>"
                 value="<?= $postInput[$key] ?? '' ?>"
                 placeholder="Введите дату в формате ГГГГ-ММ-ДД"
+                style="background-image: none; color: #879296"
             >
             <?php if (isset($errors[$key])): ?>
                 <span class="form__error"><?= $errors[$key] ?></span>
