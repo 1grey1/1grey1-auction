@@ -1,0 +1,5 @@
+.pagination-item.disabled a {
+    opacity: 0.5;
+    cursor: not-allowed;
+    user-select: none;
+}

@@ -18,6 +18,7 @@ if ($searchQuery = $_GET['search'] ?? null) {
     exit;
 }
 
+
 $categoryList = includeTemplate('_partials/category-list.php', [
     'categories' => $categories,
 ]);

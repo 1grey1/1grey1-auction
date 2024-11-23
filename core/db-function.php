@@ -157,12 +157,45 @@ function getUserByEmail(mysqli $link, string $email): ?array
 {
     $email = mysqli_real_escape_string($link, $email);
     $sql = "
-            SELECT `user`.*, `user_profile`.`name` AS user_name, `user_profile`.`contact_info` AS contact_info, `user_profile`.`avatar_path` AS avatar_path
-            FROM `user`
-            JOIN `user_profile` ON `user`.`id` = `user_profile`.`user_id`
-            WHERE email = '$email'
-        ";
+        SELECT `user`.*, `user_profile`.`name` AS user_name, `user_profile`.`contact_info` AS contact_info, `user_profile`.`avatar_path` AS avatar_path
+        FROM `user`
+        JOIN `user_profile` ON `user`.`id` = `user_profile`.`user_id`
+        WHERE email = '$email'
+    ";
     $result = mysqli_query($link, $sql);
 
     return mysqli_fetch_assoc($result);
+}
+
+function getLotsPaginated(mysqli $link, int $page, $perPage = ITEMS_PER_PAGE): ?array
+{
+    $lots = [];
+
+    if ($page >= 1) {
+        $offset = ($page - 1) * $perPage;
+        $sql = "
+            SELECT `lot`.*, `c`.`name` AS category_name
+            FROM `lot`
+            JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+            LIMIT $perPage OFFSET $offset
+        ";
+        $result = mysqli_query($link, $sql);
+        while ($lot = mysqli_fetch_assoc($result)) {
+            $lots[] = $lot;
+        }
+    }
+
+    return $lots;
+}
+
+function getLotPageCount(mysqli $link): int
+{
+    $sql = "
+        SELECT COUNT(id) AS count
+        FROM lot
+    ";
+
+    $result = mysqli_query($link, $sql);
+
+    return intval(mysqli_fetch_assoc($result)['count']);
 }

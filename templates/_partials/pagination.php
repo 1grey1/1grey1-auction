@@ -1,11 +1,22 @@
 <?php
 
+/** @var int $page */
+/** @var int $pageCount */
+
 ?>
+
 <ul class="pagination-list">
-    <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
-    <li class="pagination-item pagination-item-active"><a>1</a></li>
-    <li class="pagination-item"><a href="#">2</a></li>
-    <li class="pagination-item"><a href="#">3</a></li>
-    <li class="pagination-item"><a href="#">4</a></li>
-    <li class="pagination-item pagination-item-next"><a href="#">Вперед</a></li>
+    <li class="pagination-item pagination-item-prev<?= $page <= 1 ? ' disabled' : '' ?>">
+        <a <?= $page > 1 ? ('href="index.php?page=' . ($page - 1) . '"') : '' ?>>Назад</a>
+    </li>
+
+    <?php for ($i = 1; $i <= $pageCount; $i++): ?>
+        <li class="pagination-item<?= $page === $i ? ' pagination-item-active' : '' ?>">
+            <a href="index.php?page=<?= $i ?>"><?= $i ?></a>
+        </li>
+    <?php endfor; ?>
+
+    <li class="pagination-item pagination-item-next<?= $page >= $pageCount ? ' disabled' : '' ?>">
+        <a <?= $page < $pageCount ? ('href="index.php?page=' . ($page + 1) . '"') : '' ?>>Вперед</a>
+    </li>
 </ul>
