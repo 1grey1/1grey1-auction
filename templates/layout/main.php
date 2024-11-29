@@ -16,6 +16,7 @@
     <link href="../resources/css/normalize.min.css" rel="stylesheet">
     <link href="../resources/css/style.css" rel="stylesheet">
     <link href="../resources/css/fix.css" rel="stylesheet">
+    <link href="../resources/css/app.css" rel="stylesheet">
 </head>
 <body>
     <div class="page-wrapper">

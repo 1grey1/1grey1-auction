@@ -16,7 +16,7 @@ function getCategoryName(array $categories, ?int $categoryId): string
 {
     $name = '';
     foreach ($categories as $category) {
-        if ($category['id'] === $categoryId) {
+        if (intval($category['id']) === $categoryId) {
             $name = $category['name'];
         }
     }

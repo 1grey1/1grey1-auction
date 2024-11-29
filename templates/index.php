@@ -2,7 +2,7 @@
 
 /** @var array $lots */
 /** @var array $categories */
-
+/** @var string $paginationList */
 ?>
 
 <section class="promo">
@@ -35,4 +35,6 @@
         <?php endforeach; ?>
 
     </ul>
+
+    <?= $paginationList ?>
 </section>

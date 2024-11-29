@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Сделал пагинацию на главной странице [AUC-26](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-26)
+- Сделал поиск с помощью метода LIKE [AUC-24](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-24)
 - Исправил деформацию изображений и добавил иконку для будующей авотарки [AUC-19](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-19)
 - Сделал страницу мои ставки [AUC-22](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-22)
 - Добавили cs-fixer в проект [AUC-11](https://webdot.youtrack.cloud/agiles/171-8/current?issue=AUC-11)
