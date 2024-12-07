@@ -9,10 +9,16 @@ require_once './core/init.php';
 
 $categoryId = null;
 
+$page = $_GET['page'] ?? 1;
+
 if ($searchQuery = $_GET['search'] ?? null) {
-    $lots = getLotsBySearchQuery($link, $searchQuery);
+    $lots = getLotsBySearchQuery($link, $searchQuery, intval($page));
+    $pageCount = ceil(getLotsBySearchQuery($link, $searchQuery, intval($page), true) / ITEMS_PER_PAGE);
+    $param = 'search=' . $searchQuery;
 } elseif ($categoryId = $_GET['category_id'] ?? null) {
-    $lots = getLotsByCategory($link, intval($categoryId));
+    $lots = getLotsByCategory($link, intval($categoryId), intval($page) );
+    $pageCount = ceil(getLotsByCategory($link, intval($categoryId), intval($page), true) / ITEMS_PER_PAGE);
+    $param = 'category_id=' . $categoryId;
 } else {
     header( 'Location: index.php');
     exit;
@@ -27,7 +33,12 @@ $pageContent = includeTemplate('all-lots.php', [
     'lots'           => $lots,
     'categoryList'   => $categoryList,
     'category'       => getCategoryName($categories, intval($categoryId)),
-    'paginationList' => includeTemplate('_partials/pagination.php'),
+    'paginationList' => includeTemplate('_partials/pagination.php', [
+        'page'      => intval($page),
+        'pageCount' => $pageCount,
+        'nameList'  => 'all-lots',
+        'param'     => $param,
+    ]),
     'searchQuery'    => $searchQuery
 ]);
 
