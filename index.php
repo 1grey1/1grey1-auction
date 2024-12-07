@@ -19,6 +19,7 @@ $pageContent = includeTemplate('index.php', [
     'paginationList' => includeTemplate('_partials/pagination.php', [
         'page'      => intval($page),
         'pageCount' => $pageCount,
+        'nameList'  => 'index',
     ]),
 ]);
 

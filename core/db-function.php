@@ -96,21 +96,39 @@ function createBet(mysqli $link, int $cost, int $userId, int $lotId): bool
     return mysqli_query($link, $sql);
 }
 
-function getLotsByCategory(mysqli $link, int $categoryId): ?array
+function getLotsByCategory(mysqli $link, int $categoryId, int $page, bool $f = false, $perPage = ITEMS_PER_PAGE)
 {
     $lots = [];
-    $sql = "
-        SELECT `lot`.*, `category`.`name` AS category_name
-        FROM lot
-        JOIN category on category.id = lot.category_id
-        WHERE lot.category_id = $categoryId
-    ";
-    $result = mysqli_query($link, $sql);
-    while ($lot = mysqli_fetch_assoc($result)) {
-        $lots[] = $lot;
+
+    if ($page >= 1) {
+        $offset = ($page - 1) * $perPage;
+        if ($f) {
+            $sql = "
+                SELECT `lot`.*, `category`.`name` AS category_name
+                FROM lot
+                JOIN category on category.id = lot.category_id
+                WHERE lot.category_id = $categoryId
+            ";
+        } else {
+            $sql = "
+                SELECT `lot`.*, `category`.`name` AS category_name
+                FROM lot
+                JOIN category on category.id = lot.category_id
+                WHERE lot.category_id = $categoryId
+                LIMIT $perPage OFFSET $offset
+            ";
+        }
+        $result = mysqli_query($link, $sql);
+        while ($lot = mysqli_fetch_assoc($result)) {
+            $lots[] = $lot;
+        }
     }
 
-    return $lots;
+    if ($f) {
+        return count($lots);
+    } else {
+        return $lots;
+    }
 }
 
 function getBetsByUser(mysqli $link, int $userId): ?array
@@ -136,21 +154,39 @@ function getBetsByUser(mysqli $link, int $userId): ?array
  * @param string $query
  * @return array|null
  */
-function getLotsBySearchQuery(mysqli $link, string $query): ?array
+function getLotsBySearchQuery(mysqli $link, string $query, int $page, bool $f = false, $perPage = ITEMS_PER_PAGE)
 {
     $lots = [];
-    $sql = "
-        SELECT `lot`.*, `c`.`name` AS category_name
-        FROM `lot`
-        JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
-        WHERE `title` LIKE '%$query%'
-    ";
-    $result = mysqli_query($link, $sql);
-    while ($lot = mysqli_fetch_assoc($result)) {
-        $lots[] = $lot;
+
+    if ($page >= 1) {
+        $offset = ($page - 1) * $perPage;
+        if ($f) {
+            $sql = "
+                SELECT `lot`.*, `c`.`name` AS category_name
+                FROM `lot`
+                JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+                WHERE `title` LIKE '%$query%'
+            ";
+        } else {
+            $sql = "
+                SELECT `lot`.*, `c`.`name` AS category_name
+                FROM `lot`
+                JOIN `category` `c` ON `c`.`id` = `lot`.`category_id`
+                WHERE `title` LIKE '%$query%'
+                LIMIT $perPage OFFSET $offset
+            ";
+        }
+        $result = mysqli_query($link, $sql);
+        while ($lot = mysqli_fetch_assoc($result)) {
+            $lots[] = $lot;
+        }
+    }
+    if ($f) {
+        return count($lots);
+    } else {
+        return $lots;
     }
 
-    return $lots;
 }
 
 function getUserByEmail(mysqli $link, string $email): ?array

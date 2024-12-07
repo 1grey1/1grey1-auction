@@ -1,6 +1,5 @@
 <?php
 
-/** @var string  $pageContent */
 /** @var ?array  $user */
 /** @var ?string $searchQuery */
 
