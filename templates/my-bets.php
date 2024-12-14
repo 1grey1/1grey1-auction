@@ -22,7 +22,7 @@
                 </td>
                 <td class="rates__timer">
                     <!--timer--finishing-->
-                    <div class="timer"><?= esc($bet['deadline']) ?></div>
+                    <div class="timer" data-deadline="<?= esc($bet['deadline']) ?>"><?= esc($bet['deadline']) ?></div>
                 </td>
                 <td class="rates__price">
                     <?= escCost($bet['amount']) ?><b class="rub">р</b>

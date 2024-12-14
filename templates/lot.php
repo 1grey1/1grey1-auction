@@ -27,7 +27,7 @@
         </div>
         <div class="lot-item__right">
             <div class="lot-item__state">
-                <div class="lot-item__timer timer" style="width: fit-content;"><?= esc($lot['deadline']) ?></div>
+                <div class="lot-item__timer timer" style="width: fit-content;" data-deadline="<?= esc($lot['deadline']) ?>"><?= esc($lot['deadline']) ?></div>
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
@@ -61,7 +61,7 @@
                 </form>
             </div>
             <div class="history">
-                <h3>История ставок (<span>10</span>)</h3>
+                <h3>История ставок (<span><?= count($bets) ?></span>)</h3>
                 <table class="history__list">
 
                     <?php foreach ($bets as $bet): ?>
