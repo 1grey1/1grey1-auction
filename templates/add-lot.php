@@ -71,6 +71,7 @@
             <input
                 class="visually-hidden"
                 type="file"
+                accept=".jpg, .jpeg, .png, .gif"
                 id="<?= $key ?>"
                 name="<?= $key ?>"
             >

@@ -27,7 +27,7 @@
                     <?= escCost($lot['start_price'])?><b class="rub">р</b>
                 </span>
             </div>
-            <div class="lot__timer timer"><?= esc($lot['deadline']) ?></div>
+            <div class="lot__timer timer" data-deadline="<?= esc($lot['deadline']) ?>"><?= esc($lot['deadline']) ?></div>
         </div>
     </div>
 </li>

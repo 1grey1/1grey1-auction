@@ -35,5 +35,7 @@
     ]) ?>
 
     <script src="https://kit.fontawesome.com/ede81f2f60.js" crossorigin="anonymous"></script>
+
+    <script src="../../src/timer.js"></script>
 </body>
 </html>
