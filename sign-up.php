@@ -16,9 +16,11 @@ $fields = [
     'email',
     'password',
     'name',
-    'contact_info',
+    'contact_info'
 ];
 
+/** @var $link */
+/** @var array $ERROR_MESSAGE */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($fields as $key) {
         if (!isset($_POST[$key])) {
@@ -26,13 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $postInput[$key] = trim($_POST[$key]);
-        if ($postInput[$key] === '') {
-            $errors[$key] = 'Это поле обязательно для заполнения';
+        if (!empty(validateFormData($postInput[$key], $key, $ERROR_MESSAGE, $link))) {
+            $errors[$key] = validateFormData($postInput[$key], $key, $ERROR_MESSAGE, $link);
         }
     }
 
     if (empty($errors)) {
-        /** @var $link */
         if (createUser($link, $postInput)) {
             $_SESSION['userCreated'] = 'Вы успешно зарегистрировали аккаунт';
             header('Location: login.php');

@@ -235,3 +235,23 @@ function getLotPageCount(mysqli $link): int
 
     return intval(mysqli_fetch_assoc($result)['count']);
 }
+
+function findEmailInDB(mysqli $link = null, string $email): bool
+{
+    if (isset($link)) {
+        $email = mysqli_real_escape_string($link, $email);
+        $sql = "
+        SELECT COUNT(*) as count 
+        FROM user
+        WHERE email = '$email'
+        ";
+        $result = mysqli_query($link, $sql);
+
+        if (mysqli_fetch_assoc($result)['count'] > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return false;
+}
