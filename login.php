@@ -24,9 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             continue;
         }
 
+        /** @var array $ERROR_MESSAGE */
         $postInput[$key] = trim($_POST[$key]);
-        if ($postInput[$key] === '') {
-            $errors[$key] = 'Это поле обязательно для заполнения';
+        if (!empty(validateFormData($postInput[$key], $key, $ERROR_MESSAGE))) {
+            $errors[$key] = validateFormData($postInput[$key], $key, $ERROR_MESSAGE);
         }
     }
 

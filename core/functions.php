@@ -30,3 +30,16 @@ function dump(array $array): void
     print('</pre>');
     exit;
 }
+
+function validateFormData(string $value, string $key, array $errorMessages, mysqli $link = null)
+{
+    $error = null;
+    foreach ($errorMessages[$key] as $errorMessage){
+        if ($errorMessage['condition']($value, $link)){
+            $error = $errorMessage['message'];
+            http_response_code(400);
+            break;
+        }
+    }
+    return $error;
+}

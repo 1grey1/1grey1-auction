@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     previewImage.style.maxWidth = "500px";
                     previewImage.style.maxHeight = "500px";
 
+
                     // Clear previous preview
                     previewContainer.innerHTML = "";
                     previewContainer.appendChild(previewImage);
