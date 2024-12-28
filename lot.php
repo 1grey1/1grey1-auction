@@ -19,6 +19,7 @@ $fields = [
     'cost'
 ];
 
+/** @var array $ERROR_MESSAGE */
 if (isset($user) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($fields as $key) {
         if (!isset($_POST[$key])) {
@@ -26,15 +27,17 @@ if (isset($user) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $postInput[$key] = trim($_POST[$key]);
-        if ($postInput[$key] === '') {
-            $errors[$key] = 'Это поле обязательно для заполнения';
+        if (!empty(validateFormData([$postInput[$key], $lot['start_price'], $lot['bet_step']], $key, $ERROR_MESSAGE, $link))) {
+            $errors[$key] = validateFormData([$postInput[$key], $lot['start_price'], $lot['bet_step']], $key, $ERROR_MESSAGE, $link);
         }
     }
 
     $lot_id = intval($_GET['id']);
-    if (createBet($link, intval($postInput['cost']), intval($user['id']), $lot_id)) {
-        header("Location: lot.php?id=$lot_id");
-        exit;
+    if (empty($errors)) {
+        if (createBet($link, intval($postInput['cost']), intval($user['id']), $lot_id)) {
+            header("Location: lot.php?id=$lot_id");
+            exit;
+        }
     }
 }
 
@@ -48,6 +51,7 @@ $categoryList = includeTemplate('_partials/category-list.php', [
 $pageContent = includeTemplate('lot.php', [
     'bets'         => $bets,
     'categoryList' => $categoryList,
+    'errors'       => $errors,
     'lot'          => $lot,
     'user'         => $user,
 ]);

@@ -45,6 +45,95 @@ $ERROR_MESSAGE = [
             'condition' => function($text) {return empty($text);},
             'message'   => 'Это окно обязательно к заполнению'
         ]
+    ],
+    'title' => [
+        'is_set' => [
+            'condition' => function($title) {return empty($title);},
+            'message'   => 'Дайте название своему лоту'
+        ],
+    ],
+    'description' => [
+        'is_set' => [
+            'condition' => function($description) {return empty($description);},
+            'message'   => 'Введите описание лота'
+        ],
+    ],
+    'category_id' => [
+        'is_set' => [
+            'condition' => function($category_id) {return empty($category_id);},
+            'message'   => 'Выберите категорию'
+        ],
+    ],
+    'bet_step' => [
+        'is_set' => [
+            'condition' => function($bet_step) {return empty($bet_step);},
+            'message'   => 'Введите цену, в рублях'
+        ],
+        'is_set_number' => [
+            'condition' =>function($bet_step) {return !ctype_digit($bet_step);},
+            'message'   => 'Неверный формат цены'
+        ],
+    ],
+    'start_price' => [
+        'is_set' => [
+            'condition' => function($start_price) {return empty($start_price);},
+            'message'   => 'Введите цену, в рублях'
+        ],
+        'is_set_number' => [
+            'condition' =>function($bet_step) {return !ctype_digit($bet_step);},
+            'message'   => 'Неверный формат цены'
+        ],
+    ],
+    'deadline' => [
+        'is_set' => [
+            'condition' => function($deadline) {return empty($deadline);},
+            'message'   => 'Это окно обязательно к заполнению'
+        ],
+        'form_date' => [
+            'condition' => function($deadline) {
+                $format = 'Y-m-d';
+
+                $dateTime = DateTime::createFromFormat($format, $deadline);
+
+                if (!$dateTime || $dateTime->format($format) !== $deadline) {
+                    return true;
+                }
+                return false;
+            },
+            'message'   => 'Введите дату в формате YYYY-MM-DD'
+        ],
+        'deadline_date' => [
+            'condition' => function($deadline) {
+                $format = 'Y-m-d';
+
+                $dateTime = DateTime::createFromFormat($format, $deadline);
+
+                // Создаём объект "текущая дата + 1 год"
+                $oneYearFromNow = new DateTime();
+                $oneYearFromNow->modify('+1 year');
+
+                // Если переданная дата больше чем через год — возвращаем true
+                if ($dateTime > $oneYearFromNow) {
+                    return true;
+                }
+                return false;
+            },
+            'message'   => 'Дата окончания не может быть больше чем через год'
+        ],
+    ],
+    'cost' => [
+        'is_set' => [
+            'condition' => function(array $cost) {return empty($cost[0]);},
+            'message'   => 'Введите цену, в рублях'
+        ],
+        'is_set_number' => [
+            'condition' =>function(array $cost) {return !ctype_digit($cost[0]);},
+            'message'   => 'Неверный формат цены'
+        ],
+        'min_bet_step' => [
+            'condition' => function(array $cost) {return ((int)$cost[2] >= ((int)$cost[0] - (int)$cost[1]));},
+            'message'   => 'Ваша ставка должна быть больше минеимальной'
+        ]
     ]
 ];
 

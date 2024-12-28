@@ -31,7 +31,7 @@ function dump(array $array): void
     exit;
 }
 
-function validateFormData(string $value, string $key, array $errorMessages, mysqli $link = null)
+function validateFormData($value, string $key, array $errorMessages, mysqli $link = null)
 {
     $error = null;
     foreach ($errorMessages[$key] as $errorMessage){
