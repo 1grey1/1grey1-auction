@@ -21,9 +21,10 @@ $fields = [
     'description',
     'bet_step',
     'deadline',
-    'category_id'
+    'category_id',
 ];
 
+/** @var array $ERROR_MESSAGE */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($fields as $key) {
         if (!isset($_POST[$key])) {
@@ -31,10 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $postInput[$key] = trim($_POST[$key]);
-        if ($postInput[$key] === '') {
-            $errors[$key] = 'Это поле обязательно для заполнения';
+        if (!empty(validateFormData($postInput[$key], $key, $ERROR_MESSAGE, $link))) {
+            $errors[$key] = validateFormData($postInput[$key], $key, $ERROR_MESSAGE, $link);
         }
     }
+
     if (!$_FILES['photo']['tmp_name']) {
         $errors['photo'] = 'Добавте фото, пожалуйста!';
     }

@@ -4,7 +4,6 @@
 /** @var string $categoryList */
 /** @var array  $lot */
 /** @var array  $errors */
-/** @var array  $postInput */
 /** @var ?array $user */
 
 ?>
@@ -34,7 +33,7 @@
                         <span class="lot-item__cost"><?= escCost($lot['start_price']) ?></span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span><?= escCost($lot['bet_step']) ?></span>
+                        Мин. ставка <span><?= escCost($lot['bet_step']+$lot['start_price']) ?></span>
                     </div>
                 </div>
                 <?php $key = 'cost'; ?>
@@ -53,7 +52,7 @@
                             placeholder="12 000"
                         >
                         <?php if (isset($errors[$key])): ?>
-                            <span class="form__error">Введите наименование лота</span>
+                            <span class="form__error"><?= $errors[$key] ?></span>
                         <?php endif; ?>
 
                     </p>

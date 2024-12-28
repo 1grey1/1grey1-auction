@@ -39,7 +39,7 @@
                 id="<?= $key ?>"
                 name="<?= $key ?>"
             >
-                <option selected>Выберите категорию</option>
+                <option value="">Выберите категорию</option>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                 <?php endforeach; ?>
